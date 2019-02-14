@@ -1,0 +1,238 @@
+[gd_scene load_steps=30 format=2]
+
+[ext_resource path="res://tiles/cave/CaveCollisionLessSet.tres" type="TileSet" id=1]
+[ext_resource path="res://Player/KinematicBody2D.gd" type="Script" id=2]
+[ext_resource path="res://Player/Sprites/idle/spr_m_traveler_idle_anim1.png" type="Texture" id=3]
+[ext_resource path="res://Player/Sprites/idle/spr_m_traveler_idle_anim2.png" type="Texture" id=4]
+[ext_resource path="res://Player/Sprites/idle/spr_m_traveler_idle_anim3.png" type="Texture" id=5]
+[ext_resource path="res://Player/Sprites/idle/spr_m_traveler_idle_anim4.png" type="Texture" id=6]
+[ext_resource path="res://Player/Sprites/idle/spr_m_traveler_idle_anim5.png" type="Texture" id=7]
+[ext_resource path="res://Player/Sprites/idle/spr_m_traveler_idle_anim6.png" type="Texture" id=8]
+[ext_resource path="res://Player/Sprites/idle/spr_m_traveler_idle_anim7.png" type="Texture" id=9]
+[ext_resource path="res://Player/Sprites/idle/spr_m_traveler_idle_anim.png" type="Texture" id=10]
+[ext_resource path="res://Player/Sprites/run/spr_m_traveler_run_anim1.png" type="Texture" id=11]
+[ext_resource path="res://Player/Sprites/run/spr_m_traveler_run_anim2.png" type="Texture" id=12]
+[ext_resource path="res://Player/Sprites/run/spr_m_traveler_run_anim3.png" type="Texture" id=13]
+[ext_resource path="res://Player/Sprites/run/spr_m_traveler_run_anim4.png" type="Texture" id=14]
+[ext_resource path="res://Player/Sprites/run/spr_m_traveler_run_anim5.png" type="Texture" id=15]
+[ext_resource path="res://Player/Sprites/run/spr_m_traveler_run_anim6.png" type="Texture" id=16]
+[ext_resource path="res://Player/Sprites/jump/spr_m_traveler_jump_complete_anim_0009_Layer-11.png" type="Texture" id=17]
+[ext_resource path="res://Player/Sprites/jump/spr_m_traveler_jump_complete_anim_0000_Layer-20.png" type="Texture" id=18]
+[ext_resource path="res://Player/Sprites/jump/spr_m_traveler_jump_complete_anim_0001_Layer-19.png" type="Texture" id=19]
+[ext_resource path="res://Player/Sprites/jump/spr_m_traveler_jump_complete_anim_0002_Layer-18.png" type="Texture" id=20]
+[ext_resource path="res://Player/Sprites/jump/spr_m_traveler_jump_complete_anim_0003_Layer-17.png" type="Texture" id=21]
+[ext_resource path="res://Player/Sprites/jump/spr_m_traveler_jump_complete_anim_0004_Layer-16.png" type="Texture" id=22]
+[ext_resource path="res://Player/Sprites/jump/spr_m_traveler_jump_complete_anim_0005_Layer-15.png" type="Texture" id=23]
+[ext_resource path="res://tiles/cave/CaveTileBasicSet.tres" type="TileSet" id=24]
+[ext_resource path="res://tiles/cave/CaveTileDiamondSet.tres" type="TileSet" id=25]
+[ext_resource path="res://tiles/cave/CaveTileTrapSet.tres" type="TileSet" id=26]
+[ext_resource path="res://tiles/cave/CaveTileSpecialSet.tres" type="TileSet" id=27]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 14, 28 )
+
+[sub_resource type="SpriteFrames" id=2]
+
+animations = [ {
+"frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ) ],
+"loop": true,
+"name": "Idle",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ) ],
+"loop": true,
+"name": "Run",
+"speed": 15.0
+}, {
+"frames": [ ExtResource( 17 ) ],
+"loop": true,
+"name": "Jump",
+"speed": 10.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "Slide",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 23 ) ],
+"loop": true,
+"name": "Fall",
+"speed": 5.0
+} ]
+
+[node name="World" type="Node" index="0"]
+
+[node name="Backgorund2" type="TileMap" parent="." index="0"]
+
+mode = 0
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 32, 32 )
+cell_quadrant_size = 16
+cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+cell_half_offset = 2
+cell_tile_origin = 0
+cell_y_sort = false
+cell_clip_uv = false
+collision_use_kinematic = false
+collision_friction = 1.0
+collision_bounce = 0.0
+collision_layer = 1
+collision_mask = 1
+occluder_light_mask = 1
+format = 1
+tile_data = PoolIntArray( 262145, 1, 0, 262146, 24, 0, 262147, 24, 0, 262148, 24, 0, 262149, 24, 0, 262150, 24, 0, 262151, 24, 0, 262152, 24, 0, 262153, 24, 0, 262154, 24, 0, 262155, 24, 0, 327680, 1, 0, 327681, 45, 0, 327682, 0, 0, 327683, 0, 0, 327684, 0, 0, 327685, 66, 0, 327686, 46, 0, 327687, 0, 0, 327688, 0, 0, 327689, 0, 0, 327690, 0, 0, 327691, 0, 0, 393216, 0, 0, 393217, 0, 0, 393218, 0, 0, 393219, 0, 0, 393220, 0, 0, 393221, 93, 0, 393222, 45, 0, 393223, 0, 0, 393224, 0, 0, 393225, 0, 0, 393226, 0, 0, 393227, 0, 0, 458752, 0, 0, 458753, 0, 0, 458754, 0, 0, 458755, 0, 0, 458756, 0, 0, 458757, 0, 0, 458758, 0, 0, 458759, 0, 0, 458760, 0, 0, 458761, 0, 0, 458762, 0, 0, 458763, 0, 0, 524288, 0, 0, 524289, 0, 0, 524290, 0, 0, 524291, 0, 0, 524292, 0, 0, 524293, 0, 0, 524294, 0, 0, 524295, 0, 0, 524296, 0, 0, 524297, 0, 0, 524298, 0, 0, 524299, 0, 0 )
+_sections_unfolded = [ "Cell" ]
+
+[node name="Background15" type="TileMap" parent="." index="1"]
+
+mode = 0
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 32, 32 )
+cell_quadrant_size = 16
+cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+cell_half_offset = 2
+cell_tile_origin = 0
+cell_y_sort = false
+cell_clip_uv = false
+collision_use_kinematic = false
+collision_friction = 1.0
+collision_bounce = 0.0
+collision_layer = 1
+collision_mask = 1
+occluder_light_mask = 1
+format = 1
+tile_data = PoolIntArray( 262147, 37, 0, 262151, 37, 0, 262154, 37, 0, 327683, 37, 0, 327687, 37, 0, 327690, 37, 0, 393219, 37, 0, 393223, 37, 0, 393226, 37, 0, 458755, 37, 0, 458759, 36, 0, 458762, 37, 0, 524291, 37, 0, 524298, 37, 0, 589831, 37, 0 )
+_sections_unfolded = [ "Cell" ]
+
+[node name="Background1" type="TileMap" parent="." index="2"]
+
+mode = 0
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 32, 32 )
+cell_quadrant_size = 16
+cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+cell_half_offset = 2
+cell_tile_origin = 0
+cell_y_sort = false
+cell_clip_uv = false
+collision_use_kinematic = false
+collision_friction = 1.0
+collision_bounce = 0.0
+collision_layer = 1
+collision_mask = 1
+occluder_light_mask = 1
+format = 1
+tile_data = PoolIntArray( 524288, 16, 0, 524289, 16, 0, 524290, 16, 0, 524291, 16, 0, 524292, 16, 0, 524293, 16, 0, 524294, 16, 0, 524295, 16, 0, 524296, 16, 0, 524297, 16, 0, 524298, 16, 0, 524299, 16, 0, 589831, 37, 0 )
+_sections_unfolded = [ "Cell" ]
+
+[node name="Player" type="KinematicBody2D" parent="." index="3"]
+
+position = Vector2( 128, 32 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+collision/safe_margin = 0.08
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player" index="0"]
+
+position = Vector2( 0, 4 )
+shape = SubResource( 1 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Sprite" type="AnimatedSprite" parent="Player" index="1"]
+
+frames = SubResource( 2 )
+animation = "Idle"
+frame = 2
+
+[node name="GroundTiles" type="TileMap" parent="." index="4"]
+
+mode = 0
+tile_set = ExtResource( 24 )
+cell_size = Vector2( 32, 32 )
+cell_quadrant_size = 16
+cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+cell_half_offset = 2
+cell_tile_origin = 0
+cell_y_sort = false
+cell_clip_uv = false
+collision_use_kinematic = false
+collision_friction = 1.0
+collision_bounce = 0.0
+collision_layer = 1
+collision_mask = 1
+occluder_light_mask = 1
+format = 1
+tile_data = PoolIntArray( 262146, 34, 0, 262147, 49, 0, 262148, 41, 0, 262149, 41, 0, 262150, 41, 0, 262151, 41, 0, 262152, 41, 0, 262153, 56, 0, 262154, 59, 0, 327684, 12, 0, 327685, 42, 0, 327686, 42, 0, 327687, 42, 0, 327688, 27, 0, 589824, 3, 0, 589825, 48, 0, 589826, 48, 0, 589827, 48, 0, 589828, 48, 0, 589829, 48, 0, 589830, 48, 0, 589831, 48, 0, 589832, 48, 0, 589833, 48, 0, 589834, 48, 0, 589835, 65, 0, 655360, 5, 0, 655361, 64, 0, 655362, 64, 0, 655363, 64, 0, 655364, 64, 0, 655365, 64, 0, 655366, 64, 0, 655367, 64, 0, 655368, 64, 0, 655369, 64, 0, 655370, 64, 0, 655371, 67, 0 )
+_sections_unfolded = [ "Cell", "Transform" ]
+
+[node name="ObjectTiles" type="TileMap" parent="." index="5"]
+
+mode = 0
+tile_set = ExtResource( 25 )
+cell_size = Vector2( 32, 32 )
+cell_quadrant_size = 16
+cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+cell_half_offset = 2
+cell_tile_origin = 0
+cell_y_sort = false
+cell_clip_uv = false
+collision_use_kinematic = false
+collision_friction = 1.0
+collision_bounce = 0.0
+collision_layer = 1
+collision_mask = 1
+occluder_light_mask = 1
+format = 1
+tile_data = PoolIntArray( 524296, 3, 0 )
+_sections_unfolded = [ "Cell" ]
+
+[node name="TrapTiles" type="TileMap" parent="." index="6"]
+
+mode = 0
+tile_set = ExtResource( 26 )
+cell_size = Vector2( 32, 32 )
+cell_quadrant_size = 16
+cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+cell_half_offset = 2
+cell_tile_origin = 0
+cell_y_sort = false
+cell_clip_uv = false
+collision_use_kinematic = false
+collision_friction = 1.0
+collision_bounce = 0.0
+collision_layer = 1
+collision_mask = 1
+occluder_light_mask = 1
+format = 1
+tile_data = PoolIntArray( 524298, 1, 0 )
+_sections_unfolded = [ "Cell" ]
+
+[node name="SpecialTiles" type="TileMap" parent="." index="7"]
+
+mode = 0
+tile_set = ExtResource( 27 )
+cell_size = Vector2( 32, 32 )
+cell_quadrant_size = 16
+cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+cell_half_offset = 2
+cell_tile_origin = 0
+cell_y_sort = false
+cell_clip_uv = false
+collision_use_kinematic = false
+collision_friction = 1.0
+collision_bounce = 0.0
+collision_layer = 1
+collision_mask = 1
+occluder_light_mask = 1
+format = 1
+tile_data = PoolIntArray( 458753, 0, 0 )
+_sections_unfolded = [ "Cell" ]
+
+
