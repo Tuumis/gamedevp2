@@ -30,6 +30,8 @@ func _ready():
 	# Initialization here
 	motion.x = 0		
 	play_animation(IDLE_ANIM)
+	$CollisionShape2DCrouch.disabled = true
+	$CollisionShape2D.disabled = false
 	pass
 
 
@@ -41,6 +43,8 @@ func _input(event):
 		block_movement = false
 		disabled_down = false
 		slide_covered = 0
+		$CollisionShape2DCrouch.disabled = true
+		$CollisionShape2D.disabled = false
 	if(event.is_action_pressed("ui_left")):
 		disabled_right = true
 	elif(event.is_action_released("ui_left")):
@@ -59,11 +63,11 @@ func gravity_loop():
 	motion.y +=GRAVITY
 
 func controls_loop():
-	var final_anim = IDLE_ANIM
-	var INPUT_LEFT 	= Input.is_action_pressed("ui_left")
-	var INPUT_RIGHT = Input.is_action_pressed("ui_right")
-	var INPUT_UP 	= Input.is_action_just_pressed("ui_up")
-	var INPUT_DOWN 	= Input.is_action_pressed("ui_down")
+	var final_anim 			= IDLE_ANIM
+	var INPUT_LEFT 			= Input.is_action_pressed("ui_left")
+	var INPUT_RIGHT 		= Input.is_action_pressed("ui_right")
+	var INPUT_UP 			= Input.is_action_just_pressed("ui_up")
+	var INPUT_DOWN 			= Input.is_action_pressed("ui_down")
 	var INPUT_DOWN_JUST 	= Input.is_action_just_pressed("ui_down")
 	
 	if right_direction(INPUT_RIGHT):
@@ -110,6 +114,8 @@ func controls_loop():
 	
 func slide(going_right):
 	if slide_covered < SLIDE_DISTANCE:
+		$CollisionShape2DCrouch.disabled = false
+		$CollisionShape2D.disabled = true
 		if going_right:
 			motion.x = -SLIDE_DISTANCE
 		else:
@@ -118,6 +124,8 @@ func slide(going_right):
 		slide_covered +=1
 		return true
 	else:
+		$CollisionShape2DCrouch.disabled = true
+		$CollisionShape2D.disabled = false
 		disabled_down = true
 		slide_covered = 0
 		return false
@@ -137,6 +145,8 @@ func down_direction(INPUT_DOWN):
 func jump(INPUT_UP):
 	
 	slide_covered = 0
+	$CollisionShape2DCrouch.disabled = true
+	$CollisionShape2D.disabled = false
 	
 	if is_on_floor():
 		is_allowed_to_jump = true
@@ -149,17 +159,13 @@ func jump(INPUT_UP):
 			is_allowed_to_jump = false
 			motion.y = JUMP_HEIGHT
 			motion = move_and_slide(motion, UP)
-			
-#func slide(direction):
-#	if direction < 0:
-#			play_animation(SLIDE_ANIM)
-#	if direction > 0:
-#			play_animation(SLIDE_ANIM)
-		
+					
 	
 func crouch(INPUT_DOWN):	
 	if is_on_floor():	
 		if INPUT_DOWN:
+			$CollisionShape2DCrouch.disabled = false
+			$CollisionShape2D.disabled = true
 			block_movement = true
 
 
