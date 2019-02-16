@@ -61,6 +61,8 @@ func _physics_process(delta):
 	
 func gravity_loop():
 	motion.y +=GRAVITY
+	if position.y > 400:
+		get_tree().reload_current_scene()
 
 func controls_loop():
 	var final_anim 			= IDLE_ANIM
