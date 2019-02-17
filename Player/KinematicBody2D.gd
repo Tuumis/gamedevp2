@@ -4,7 +4,7 @@ const UP = Vector2(0, -1)
 const GRAVITY = 50
 const SPEED = 300
 const JUMP_HEIGHT = -550
-const SLIDE_DISTANCE = 20
+const SLIDE_DISTANCE = 25
 
 
 const IDLE_ANIM = "Idle"
